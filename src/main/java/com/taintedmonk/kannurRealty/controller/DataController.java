@@ -84,4 +84,10 @@ public class DataController {
         }
     }
 
+    @GetMapping("/getImage/{id}")
+    public ResponseEntity<FileEntity> getImage(@PathVariable(value = "id") long id){
+        Optional<FileEntity> imageFile = fileRepository.findById(id);
+        return  ResponseEntity.ok().body(imageFile.get());
+    }
+
 }
